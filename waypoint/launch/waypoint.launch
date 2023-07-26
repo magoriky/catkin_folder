@@ -1,0 +1,3 @@
+<launch>
+    <node name = "waypoint" pkg="waypoint" type="waypoint" output="screen"/>
+    </launch>

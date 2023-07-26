@@ -1,0 +1,8 @@
+<launch>
+ <node pkg="tf" type="static_transform_publisher" name="world_to_map" args="293446 4138896 0 2.373647783 0 0 /world /map 100"/>
+
+ <!--This was x y z yaw pitch roll-->
+ <!--node pkg="tf" type="static_transform_publisher" name="world_to_map" args="5 4 0 1.570796327 0 0 /world /map 100"/-->
+
+
+</launch>

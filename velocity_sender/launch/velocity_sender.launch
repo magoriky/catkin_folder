@@ -1,0 +1,3 @@
+<launch>
+    <node name = "velocity_sender" pkg="velocity_sender" type="velocity_sender" output="screen"/>
+    </launch>
