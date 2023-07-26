@@ -1,0 +1,7 @@
+<?xml version = "1.0"?>
+
+<launch>
+
+<node name = "ricardo_action" pkg = "ricardo_action" type = "ricardo_action" output = "screen"/>
+
+</launch>

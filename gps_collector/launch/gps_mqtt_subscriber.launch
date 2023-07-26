@@ -1,0 +1,6 @@
+<launch>
+<node pkg="gps_collector" name = "mqtt_subscriber" type="gps_mqtt_subscriber.py" output="screen">
+</node>
+
+
+</launch>

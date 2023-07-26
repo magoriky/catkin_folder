@@ -1,0 +1,27 @@
+<launch>
+ <!-- -->
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true">
+
+    <param name="magnetic_declination_radians" value="0"/>
+    <param name="yaw_offset" value="0"/>
+    <param name="zero_altitude" value="true"/>
+    
+    
+    <rosparam command="load" file="$(find gps_navigation)/config/navsat_transform_params.yaml" />
+    <rosparam param="datum">[37.373826, 126.667258, 0.0, map, base_link]</rosparam>
+    <!--rosparam param="datum">[37.373682, 126.667119, 0.0, map, base_link]</rosparam-->
+
+ 
+
+    
+    <param name="use_odometry_yaw" value="false"/>
+    <param name="wait_for_datum" value="true"/>
+    
+
+    <remap from="/imu/data" to="/handsfree/imu" />
+    <remap from="/gps/fix" to="/cell/fix" />
+    <remap from="/odometry/filtered" to="/odom" />
+
+  </node>
+
+</launch>
