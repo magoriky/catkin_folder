@@ -22,7 +22,7 @@ def get_xy_based_on_lat_long(lat,lon):
     return xg2, yg2
 
 def movebase_client(points_list):
-    
+    e = 0.46
     for i in range(len(points_list)-1):
         p0 = points_list[i]
         p1 = points_list[i+1]
@@ -37,8 +37,8 @@ def movebase_client(points_list):
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.header.stamp = rospy.Time.now()
-        goal.target_pose.pose.position.x = round(y,2)   #The output of "get_xy_based_on_lat_long" assumes north is in Y direction
-        goal.target_pose.pose.position.y = round(-x,2) #The output of "get_xy_based_on_lat_long" assumes east is in X direction
+        goal.target_pose.pose.position.x = round(y,2)/(1 + e)   #The output of "get_xy_based_on_lat_long" assumes north is in Y direction
+        goal.target_pose.pose.position.y = round(-x,2)/(1 + e) #The output of "get_xy_based_on_lat_long" assumes east is in X direction
         vector = complex(y2,-x2)
         ang = np.angle(vector)
         quat = tf.transformations.quaternion_from_euler(0.0,0.0,np.angle(vector))
