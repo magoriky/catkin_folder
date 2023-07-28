@@ -22,7 +22,7 @@ def get_xy_based_on_lat_long(lat,lon):
     return xg2, yg2
 
 def movebase_client(points_list):
-    e = 0.46
+    e = 0.52
     for i in range(len(points_list)-1):
         p0 = points_list[i]
         p1 = points_list[i+1]
