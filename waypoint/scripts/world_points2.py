@@ -33,12 +33,15 @@ def movebase_client(points_list):
 
         client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
         client.wait_for_server()
+        xt = round(y,2)/(1 + e)
+        yt = round(-x,2)/(1 + e)
+        
 
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.header.stamp = rospy.Time.now()
-        goal.target_pose.pose.position.x = round(y,2)/(1 + e)   #The output of "get_xy_based_on_lat_long" assumes north is in Y direction
-        goal.target_pose.pose.position.y = round(-x,2)/(1 + e) #The output of "get_xy_based_on_lat_long" assumes east is in X direction
+        goal.target_pose.pose.position.x = xt*np.cos(np.deg2rad(14.24)) - yt*np.sin(np.deg2rad(14.24))   #The output of "get_xy_based_on_lat_long" assumes north is in Y direction
+        goal.target_pose.pose.position.y = xt*np.sin(np.deg2rad(14.24)) + yt*np.cos(np.deg2rad(14.24)) #The output of "get_xy_based_on_lat_long" assumes east is in X direction
         vector = complex(y2,-x2)
         ang = np.angle(vector)
         quat = tf.transformations.quaternion_from_euler(0.0,0.0,np.angle(vector))
